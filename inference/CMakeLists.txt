@@ -15,3 +15,14 @@ target_include_directories(object-detection
     PRIVATE include
 )
 target_link_libraries(object-detection ${OpenCV_LIBS})
+
+# Executable for live object detection for webcam
+add_executable(live-object-detection
+    src/live-detection.cpp
+    src/image-detection.cpp
+)
+target_include_directories(live-object-detection 
+    PRIVATE ${OpenCV_INCLUDE_DIRS}
+    PRIVATE include
+)
+target_link_libraries(live-object-detection ${OpenCV_LIBS})

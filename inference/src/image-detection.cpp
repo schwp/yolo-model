@@ -38,8 +38,7 @@ bool calculateBoundingBox(float x, float y, float w, float h,
                          float confidence) {
     
     bool coords_valid = false;
-    
-    // Test 1: Coordonnées normalisées (0-1)
+
     if (x >= 0.0f && x <= 1.0f && y >= 0.0f && y <= 1.0f && 
         w >= 0.0f && w <= 1.0f && h >= 0.0f && h <= 1.0f) {
         
@@ -49,7 +48,7 @@ bool calculateBoundingBox(float x, float y, float w, float h,
         height = int(h * input_image.rows);
         coords_valid = true;
     }
-    // Test 2: Coordonnées dans l'espace d'entrée du réseau (0-IMG_SIZE)
+
     else if (x >= 0.0f && x <= IMG_SIZE && y >= 0.0f && y <= IMG_SIZE &&
              w >= 0.0f && w <= IMG_SIZE && h >= 0.0f && h <= IMG_SIZE) {
         
@@ -59,21 +58,19 @@ bool calculateBoundingBox(float x, float y, float w, float h,
         height = int(h * y_factor);
         coords_valid = true;
     }
-    // Test 3: Coordonnées en pixels directes
+
     else {
         left = int(x - 0.5 * w);
         top = int(y - 0.5 * h);
         width = int(w);
         height = int(h);
-        
-        // Vérifier si ces coordonnées sont raisonnables
+
         if (left >= 0 && top >= 0 && width > 0 && height > 0 &&
             left + width <= input_image.cols && top + height <= input_image.rows) {
             coords_valid = true;
         }
     }
-    
-    // Validation finale des coordonnées
+
     bool final_valid = coords_valid && width > 0 && height > 0 && 
                        left >= 0 && top >= 0 && 
                        left + width <= input_image.cols && 
