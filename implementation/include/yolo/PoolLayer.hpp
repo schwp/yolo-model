@@ -12,6 +12,3 @@ private:
     int poolSize, stride;
     std::string layerTechnique;
 };
-
-std::vector<float> maxPooling(const std::vector<float>& input, Shape in, int poolSize, int stride);
-std::vector<float> averagePooling(const std::vector<float>& input, Shape in, int poolSize, int stride);
