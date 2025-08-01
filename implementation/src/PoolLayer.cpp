@@ -62,10 +62,12 @@ PoolLayer::PoolLayer(std::string layerTechnique, int poolSize, int stride)
         }
     }
 
-std::vector<float> PoolLayer::forward(const std::vector<float>& input, Shape in, Shape out) {
+std::vector<float> PoolLayer::forward(const std::vector<float>& input, Shape in, Shape& out) {
     if (layerTechnique == "max") {
+        out = { in.C, (in.H - poolSize) / stride + 1, (in.W - poolSize) / stride + 1 };
         return maxPooling(input, in, poolSize, stride);
     } else if (layerTechnique == "average") {
+        out = { in.C, (in.H - poolSize) / stride + 1, (in.W - poolSize) / stride + 1 };
         return averagePooling(input, in, poolSize, stride);
     } else {
         throw std::invalid_argument("Unknown pooling technique: " + layerTechnique);
