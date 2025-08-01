@@ -7,11 +7,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 option(BUILD_TESTS "Build tests" ON)
 
 set(YOLO_SOURCES
+    src/ConvLayer.cpp
     src/PoolLayer.cpp
 )
 
 set(YOLO_HEADERS
     include/yolo/yolo.hpp
+    include/yolo/ConvLayer.hpp
     include/yolo/Layer.hpp
     include/yolo/PoolLayer.hpp
 )
