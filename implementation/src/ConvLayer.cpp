@@ -11,10 +11,9 @@ ConvLayer::ConvLayer(int in_channels, int out_channels, int kernel_size, int str
     std::mt19937 gen(0);
     std::normal_distribution<float> dist(0.0f, stddev);
 
+    biases_.resize(out_channels, 0.0f);
     weights_.resize(out_channels * in_channels * kernel_size * kernel_size);
-    biases_.resize(out_channels);
     for (float &w : weights_) w = dist(gen);
-    for (float &b : biases_) b = 0.0f;
 }
 
 std::vector<float> ConvLayer::forward(const std::vector<float>& input, Shape in, Shape& out) {

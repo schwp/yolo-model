@@ -8,12 +8,14 @@ option(BUILD_TESTS "Build tests" ON)
 
 set(YOLO_SOURCES
     src/ConvLayer.cpp
+    src/FullyConnectedLayer.cpp
     src/PoolLayer.cpp
 )
 
 set(YOLO_HEADERS
     include/yolo/yolo.hpp
     include/yolo/ConvLayer.hpp
+    include/yolo/FullyConnectedLayer.hpp
     include/yolo/Layer.hpp
     include/yolo/PoolLayer.hpp
 )

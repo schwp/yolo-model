@@ -3,6 +3,7 @@ find_package(GTest REQUIRED)
 set(TEST_SOURCES
     test_pooling.cpp
     test_convolution.cpp
+    test_fully_connected.cpp
 )
 
 add_executable(yolo_tests ${TEST_SOURCES})
