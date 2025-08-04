@@ -14,7 +14,6 @@ FullyConnectedLayer::FullyConnectedLayer(int in_features, int out_features)
 
 std::vector<float> FullyConnectedLayer::forward(const std::vector<float>& input, Shape in, Shape& out) {
     assert(input.size() == in_features_ && "Input size must match in_features");
-    assert(input.size() == in.H * in.W && "Input size must match Shape dimensions");
 
     std::vector<float> output(out_features_);
     out = { 1, 1, out_features_ };
